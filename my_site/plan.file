@@ -1,0 +1,7 @@
+# urls & views
+/                        =>  load starting page
+                            lists latest blog post
+                            some welcome text
+/posts                  =>  page with all blog posts
+/posts/my-first-post    =>  load individual blog post page
+/posts/<slug>
