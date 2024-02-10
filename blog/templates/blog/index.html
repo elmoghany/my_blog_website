@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    My blog
+{% endblock %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "blog/post.css" %}">
+    <link rel="stylesheet" href="{% static "blog/index.css" %}">
+{% endblock %}
+
+{% block body %}
+
+    <section id="welcome">
+        <header>
+            <img src={% static "blog/images/moghany.jpg" %} alt="Moghany - the author of this blog">
+            <h2>Moghany's BLOG</h2>
+        </header>
+        <p>I am Mohamed Elmoghany. I love to blog about programming and Machine Learning</p>
+    </section>
+
+    <section id="latest-posts">
+        <h2>My latest thoughts</h2>
+        <ul>
+          {% for post in posts %}
+            {% include "blog/includes/post.html" %}
+          {% endfor %}
+        </ul>
+    </section>
+
+    <section id="about">
+        <h2>what i do?</h2>
+        <p>I love programming, i love to help others. be in touch</p>
+        <p>my goal is to keep growing as a developer</p>
+    </section>
+{% endblock %}

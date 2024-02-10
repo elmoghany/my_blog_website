@@ -1,0 +1,28 @@
+{
+    "window.zoomLevel": 2,
+    "python.languageServer": "Pylance",
+    "editor.inlineSuggest.enabled": true,
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    // "django.snippets.exclude": [
+    //     "cms",
+    //     "wagtail"
+    // ],
+    "files.associations": {
+        "**/*.html": "html",
+        "**/templates/**/*.html": "django-html",
+        "**/templates/**/*": "django-text",
+        "**/requirements{/**,*}.{txt,in}": "pip-requirements"
+    },
+    "emmet.includeLanguages": {"django-html": "html"}
+
+}
