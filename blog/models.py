@@ -6,9 +6,15 @@ class Author(models.Model):
     last_name = models.CharField(max_length=50)
     email = models.EmailField()
     
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
+        
 class Tag(models.Model):
     caption = models.CharField(max_length=100)
     
+    def __str__(self):
+        return f"{self.caption}"
+
 class Post(models.Model):
     title = models.CharField(max_length=50)
     excerpt = models.CharField(max_length=300)
@@ -17,5 +23,7 @@ class Post(models.Model):
     slug = models.SlugField(unique=True, default="", blank=True, null=False, db_index=True)
     image_name = models.CharField(max_length=50)
     author = models.ForeignKey("blog.Author", on_delete=models.SET_NULL, null=True)
-    caption = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag)
     
+    def __str__(self):
+        return f"{self.title}, {self.date}"    
