@@ -21,9 +21,10 @@ class Post(models.Model):
     content = models.TextField(validators=[MinLengthValidator(10)])
     date = models.DateField(auto_now=True)
     slug = models.SlugField(unique=True, default="", blank=True, null=False, db_index=True)
-    image_name = models.CharField(max_length=50)
     author = models.ForeignKey("blog.Author", on_delete=models.SET_NULL, null=True)
     tags = models.ManyToManyField(Tag)
+    image = models.ImageField(upload_to="posts", null=True)
+    # image_name = models.CharField(max_length=50)
     
     def __str__(self):
         return f"{self.title}, {self.date}"    
