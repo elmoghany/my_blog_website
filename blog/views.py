@@ -1,6 +1,9 @@
 # from datetime import date
+from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import render, get_object_or_404
 from .models import Post
+from django.views.generic import ListView, DetailView
 
 # all_posts =[
 #     {
@@ -73,6 +76,31 @@ from .models import Post
 # def get_date(post):
 #     return post['date']
 
+class StartingPageView(ListView):
+    template_name = "blog/index.html"
+    model = Post
+    odering = ["-date"]
+    context_object_name = "posts"
+    
+    def get_queryset(self):
+        query_set = super().get_queryset()
+        data = query_set[:3]
+        return data
+
+class AllPostsView(ListView):
+    template_name = "blog/all-posts.htmls"
+    model = Post
+    ordering = "-date"
+    context_object_name = "all_posts"
+    
+class SinglePostView(DetailView):
+    template_name = "blog/post-detail.html"
+    model = Post
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["post_tags"] = self.object.tags.all()
+    
 def starting_page(request):
     latest_posts = Post.objects.all().order_by("-date")[:3]
     # sorted_posts= sorted(all_posts, key=get_date)
