@@ -1,0 +1,5 @@
+#create virtual env
+#python -m venv virtual_env_name
+#(virtual_env_name) cmd line should appear like that
+#python -m pip install Django Pillow
+#python -m pip freeze > requirements.txt
