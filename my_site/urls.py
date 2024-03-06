@@ -23,4 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("blog.urls")) #http://localhost:8000/posts/my-first-post
     # path("blog", include("blog.urls")) #http://localhost:8000/blog/posts/my-first-post
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
+  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+#python manage.py collectstatic
+#python manage.py makemigration
+#python manage.py migrate
